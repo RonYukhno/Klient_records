@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="First Name"
+        android:hint="@string/first_name"
         android:ems="10"
         android:id="@+id/etFirstName"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
         android:id="@+id/etLastName"
         android:layout_below="@+id/etFirstName"
         android:layout_alignParentStart="true"
-        android:hint="Last name"/>
+        android:hint="@string/last_name"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -32,13 +32,13 @@
         android:id="@+id/etPhone"
         android:layout_below="@+id/etLastName"
         android:layout_alignParentStart="true"
-        android:hint="Phone number"/>
+        android:hint="@string/phone_number"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/button2"
+        android:text="@string/add_button"
+        android:id="@+id/btnOK"
         android:layout_below="@+id/etPhone"
         android:layout_centerHorizontal="true"
         android:layout_alignParentEnd="false"

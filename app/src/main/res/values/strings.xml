@@ -3,7 +3,10 @@
 
     <string name="app_name">Клиенты</string>
     <string name="action_settings">Настройки</string>
-    <string name="title_activity_add_client">AddClient</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_client">Добавить клиента</string>
+    <string name="add_button">Готово</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="phone_number">Телефон</string>
 
 </resources>
