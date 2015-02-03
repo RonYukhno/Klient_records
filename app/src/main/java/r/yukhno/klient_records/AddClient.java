@@ -77,15 +77,15 @@ public class AddClient extends ActionBarActivity {
 
         dbHelper = new MyDBHelper(this);
 
-        lastName = etLastName.getText().toString();
-        phone = etPhone.getText().toString();
-
         etFirstName.addTextChangedListener(textWath);
         checkFields();
     }
 
     public void onClickAdd(View v) {
 
+		lastName = etLastName.getText().toString();
+        phone = etPhone.getText().toString();
+		
         ContentValues cv = new ContentValues();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
