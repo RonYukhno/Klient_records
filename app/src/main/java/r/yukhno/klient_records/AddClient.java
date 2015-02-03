@@ -77,15 +77,15 @@ public class AddClient extends ActionBarActivity {
 
         dbHelper = new MyDBHelper(this);
 
-        lastName = etLastName.getText().toString();
-        phone = etPhone.getText().toString();
-
         etFirstName.addTextChangedListener(textWath);
         checkFields();
     }
 
     public void onClickAdd(View v) {
 
+		lastName = etLastName.getText().toString();
+        phone = etPhone.getText().toString();
+		
         ContentValues cv = new ContentValues();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -94,6 +94,7 @@ public class AddClient extends ActionBarActivity {
         cv.put(FIRST_NAME, firstName);
         cv.put(LAST_NAME, lastName);
         cv.put(PHONE, phone);
+		
         long rowID = db.insert(DATABASE_TABLE, null, cv);
         Log.d("MyLogs", "row inserted, ID = " + rowID);
 
