@@ -8,5 +8,9 @@
     <string name="first_name">Имя</string>
     <string name="last_name">Фамилия</string>
     <string name="phone_number">Телефон</string>
+    <string name="title_activity_list_of_clients">ListOfClients</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_new_client">New Client</string>
+    <string name="button_see_clients">See clients</string>
 
 </resources>

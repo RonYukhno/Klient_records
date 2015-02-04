@@ -20,6 +20,10 @@
             android:name=".AddClient"
             android:label="@string/title_activity_add_client" >
         </activity>
+        <activity
+            android:name=".ListOfClients"
+            android:label="@string/title_activity_list_of_clients" >
+        </activity>
     </application>
 
 </manifest>

@@ -11,19 +11,38 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "myDB.db";
     private static final String DATABASE_TABLE = "client_list";
-    private static final String FIRST_NAME = "first_name";
-    private static final String LAST_NAME = "last_name";
-    private static final String PHONE = "phone";
+    private static final String COLUMN_FIRST_NAME = "first_name";
+    private static final String COLUMN_LAST_NAME = "last_name";
+    private static final String COLUMN_PHONE = "phone";
     private static final String DATABASE_CREATE =
             "create table " + DATABASE_TABLE + " (_id integer primary key autoincrement, "
-                    + FIRST_NAME + " text, "
-                    + LAST_NAME + " text, "
-                    + PHONE + " integer);";
+                    + COLUMN_FIRST_NAME + " text, "
+                    + COLUMN_LAST_NAME + " text, "
+                    + COLUMN_PHONE + " integer);";
 
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
+    public static String getColumnFirstName()
+    {
+        return COLUMN_FIRST_NAME;
+    }
+
+    public static String getColumnLastName()
+    {
+        return COLUMN_LAST_NAME;
+    }
+
+    public static String getColumnPhone()
+    {
+        return COLUMN_PHONE;
+    }
+
+    public static String getDatabaseTable()
+    {
+        return DATABASE_TABLE;
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");

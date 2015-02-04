@@ -19,21 +19,16 @@ import android.widget.Toast;
 
 public class AddClient extends ActionBarActivity {
 
-    private static final String DATABASE_TABLE = "client_list";
-    private static final String FIRST_NAME = "first_name";
-    private static final String LAST_NAME = "last_name";
-    private static final String PHONE = "phone";
-
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etPhone;
     private Button btnOK;
 
-    MyDBHelper dbHelper;
+    private MyDBHelper dbHelper;
 
-    String firstName;
-    String lastName;
-    String phone;
+    private String firstName;
+    private String lastName;
+    private String phone;
 
     final String LOG_TAG = "MyLogs";
 
@@ -83,18 +78,18 @@ public class AddClient extends ActionBarActivity {
 
     public void onClickAdd(View v) {
 
-		lastName = etLastName.getText().toString();
+        lastName = etLastName.getText().toString();
         phone = etPhone.getText().toString();
-		
+
         ContentValues cv = new ContentValues();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         Log.d(LOG_TAG, "--- Insert in mytable: ---");
-        cv.put(FIRST_NAME, firstName);
-        cv.put(LAST_NAME, lastName);
-        cv.put(PHONE, phone);
-        long rowID = db.insert(DATABASE_TABLE, null, cv);
+        cv.put(MyDBHelper.getColumnFirstName(), firstName);
+        cv.put(MyDBHelper.getColumnLastName(), lastName);
+        cv.put(MyDBHelper.getColumnPhone(), phone);
+        long rowID = db.insert(MyDBHelper.getDatabaseTable(), null, cv);
         Log.d("MyLogs", "row inserted, ID = " + rowID);
 
         dbHelper.close();
@@ -103,25 +98,4 @@ public class AddClient extends ActionBarActivity {
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_client, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
