@@ -16,11 +16,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onAddClient(View v) {
-        Intent intent = new Intent(this, AddClient.class);
-        startActivity(intent);
-    }
-
     public void onSeeClients(View v) {
         startActivity(new Intent(this, ListOfClients.class));
     }

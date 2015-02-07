@@ -22,80 +22,81 @@ public class AddClient extends ActionBarActivity {
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etPhone;
-    private Button btnOK;
+    private EditText etNote;
 
     private MyDBHelper dbHelper;
 
     private String firstName;
     private String lastName;
     private String phone;
+    private String note;
 
     final String LOG_TAG = "MyLogs";
-
-    private TextWatcher textWath = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            checkFields();
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            checkFields();
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            checkFields();
-        }
-    };
-
-    public void checkFields() {
-
-        btnOK = (Button) findViewById(R.id.btnOK);
-        firstName = etFirstName.getText().toString();
-
-        if (etFirstName.equals("") || etFirstName.length() == 0) {
-            btnOK.setEnabled(false);
-        } else {
-            btnOK.setEnabled(true);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_client);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         etFirstName = (EditText) findViewById(R.id.etFirstName);
         etLastName = (EditText) findViewById(R.id.etLastName);
         etPhone = (EditText) findViewById(R.id.etPhone);
+        etNote = (EditText) findViewById(R.id.etNote);
 
         dbHelper = new MyDBHelper(this);
 
-        etFirstName.addTextChangedListener(textWath);
-        checkFields();
     }
 
-    public void onClickAdd(View v) {
+    public void onClickAdd(MenuItem item) {
 
+        firstName = etFirstName.getText().toString();
         lastName = etLastName.getText().toString();
         phone = etPhone.getText().toString();
+        note = etNote.getText().toString();
 
-        ContentValues cv = new ContentValues();
+        if (!firstName.equals("") || firstName.length() != 0) {
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues cv = new ContentValues();
 
-        Log.d(LOG_TAG, "--- Insert in mytable: ---");
-        cv.put(MyDBHelper.getColumnFirstName(), firstName);
-        cv.put(MyDBHelper.getColumnLastName(), lastName);
-        cv.put(MyDBHelper.getColumnPhone(), phone);
-        long rowID = db.insert(MyDBHelper.getDatabaseTable(), null, cv);
-        Log.d("MyLogs", "row inserted, ID = " + rowID);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        dbHelper.close();
+            Log.d(LOG_TAG, "--- Insert in mytable: ---");
+            cv.put(MyDBHelper.getColumnFirstName(), firstName);
+            cv.put(MyDBHelper.getColumnLastName(), lastName);
+            cv.put(MyDBHelper.getColumnPhone(), phone);
+            cv.put(MyDBHelper.getColumnNote(), note);
+            long rowID = db.insert(MyDBHelper.getDatabaseTable(), null, cv);
+            Log.d("MyLogs", "row inserted, ID = " + rowID);
 
-        Toast.makeText(this, "Контакт добавлен в БД", Toast.LENGTH_SHORT).show();
-        finish();
+            dbHelper.close();
+
+            Toast.makeText(this, "Контакт добавлен в БД", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_add_client, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -2,6 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="r.yukhno.klient_records.AddClient">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_accept"
+        android:title="@string/action_accept"
+        android:orderInCategory="0"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_action_accept"
+        android:onClick="onClickAdd"/>
+
 </menu>

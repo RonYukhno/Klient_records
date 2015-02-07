@@ -12,5 +12,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="button_new_client">New Client</string>
     <string name="button_see_clients">See clients</string>
+    <string name="item_add_client">Добавить</string>
+    <string name="note">Заметка</string>
+    <string name="action_accept">Готово</string>
 
 </resources>
